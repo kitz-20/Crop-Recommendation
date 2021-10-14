@@ -14,8 +14,8 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    int_features = [int(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
+    float_features = [float(x) for x in request.form.values()]
+    final_features = [np.array(float_features)]
     prediction = model.predict(final_features)
 
     output = prediction[0]
