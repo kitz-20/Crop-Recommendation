@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Farm Easy</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+
+
+  .crop {
+  border: 5px outset rgba(93, 168, 93, 0.3);
+  background-color: white;
+  text-align: center;
+  padding: 1% 10%;
+  margin: 2% 25%;
+}
+body {
+  background-color: rgba(20, 209, 20, 0.3);
+}
+
+h1{
+  padding: 3% 0%;
+}
+</style>
+</head>
+
+<body>
+  <center>
+ <div class="crop">
+	<h1>CROP RECOMMENDATION</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+      <div class="input-group mb-3">
+    	<input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="n" placeholder="Nitrogen" required="required" min="0" max="300"/>
+      </div>
+
+      <div class="input-group mb-3">   
+    	<input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="p" placeholder="Phosphorous" required="required" min="0" max="300"/>
+      </div>
+    
+      <div class="input-group mb-3">
+    	<input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="k" placeholder="Potassium" required="required" min="0" max="300"/>
+      </div>
+   
+      <div class="input-group mb-3">
+    	<input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="temp" placeholder="Temperature" required="required" min="0" max="300"/>
+      </div>
+      
+      <div class="input-group mb-3">   
+    	<input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="hum" placeholder="Humidity" required="required" min="0" max="300"/>
+      </div>
+      
+      <div class="input-group mb-3">  
+    	<input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="ph" placeholder="ph value " required="required" min="0" max="300"/>
+      </div>
+     
+      <div class="input-group mb-3">   
+    	<input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="rainfall" placeholder="Rainfall" required="required" min="0" max="300"/>
+      </div>
+      <br/>
+
+        <button type="submit" class="btn btn-success">Predict</button>
+    </form>
+    <br/>
+   {{ prediction_text }}
+
+ </div>
+</center>
+
+</body>
+</html>
